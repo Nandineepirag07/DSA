@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//create a Node class
+
 class Node{
    public:
     int data;
@@ -11,6 +13,8 @@ class Node{
         next= NULL;
     }
 };
+
+//insert function  which insert at the Head of linked List
 
 Node* insert(Node* head,int x){
    
@@ -25,6 +29,8 @@ Node* insert(Node* head,int x){
     return head;
 }
 
+// print the List
+
 void printList(Node* head){
     while(head){
         cout<<head->data<<" ";
@@ -32,6 +38,8 @@ void printList(Node* head){
     }
     cout<<endl;
 }
+
+// Take inpute from user 
 
 void takeInputList(Node*&head){
     int x;
@@ -41,15 +49,22 @@ void takeInputList(Node*&head){
      cin>>x;
     }
 }
+
+// overload left shift operator(>>) for taking input 
+
 istream& operator>>(istream &is,Node*&head){
     takeInputList(head);
     return is;
 }
 
+// overload right shift operator(<<) for Printing List 
+
 ostream& operator<<(ostream&os,Node*&head){
    printList(head);
    return os;
 }
+
+// count total no of nodes in Linked List
 
 int countNode(Node* head){
  int x=0;
@@ -60,7 +75,7 @@ int countNode(Node* head){
  return x;
 }
 
-
+// find middle Node in Linked List
 
 Node* findMiddleNode(Node* head){
   if(head==NULL) 
@@ -73,6 +88,8 @@ Node* findMiddleNode(Node* head){
   }
   return tortois;
 }
+
+// reverse the Linked List (recursive approach O(n^2))
 
 Node* reverse(Node* head){
     if(head==NULL || head->next==NULL)
@@ -88,6 +105,8 @@ Node* reverse(Node* head){
    return newHead;
 }
 
+// reverse the Linked List (recursive approach O(n)) optimized
+
 Node* optimizedRev(Node*head){
     if(head==NULL || head->next==NULL)
       return head;
@@ -98,6 +117,8 @@ Node* optimizedRev(Node*head){
     head->next =NULL;
     return newHead;
 }
+
+//Find Kth Node from end in Linked List
 
 Node* kthodeFromEnd(Node* head,int k){
     Node* hair= head;
@@ -111,6 +132,8 @@ Node* kthodeFromEnd(Node* head,int k){
     }
     return tortois;
 }
+
+// check weather there is cycle present in Linked List or not
 
 bool cycleDetect(Node* head){
     Node* hair= head;
@@ -126,6 +149,8 @@ bool cycleDetect(Node* head){
     return false;
     
 }
+
+// if there is a loop then Remove this loop
 
 void removeloop(Node* head){
     if(cycleDetect(head)==false)
@@ -155,6 +180,8 @@ void removeloop(Node* head){
 
 }
 
+// Merge Two sorted Linked List (recursively)
+
 Node* mergeSortedList(Node* head1,Node*head2){
     if(head1==NULL)
      return head2;
@@ -173,6 +200,8 @@ Node* mergeSortedList(Node* head1,Node*head2){
      }
      return newHead;
 }
+
+// Sort two Linked List (Merge sort)
 
 Node* mergeSort(Node* head){
     if(head->next==NULL)
