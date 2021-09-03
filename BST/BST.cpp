@@ -37,6 +37,71 @@ Node* insertInBST(int data,Node*root){
      return root;
 }
 
+// search an element in bst 
+
+Node* search(Node* root,int key){
+    if(root==NULL)
+      return NULL;
+    
+    if(root->data==key)  
+      return root;
+    
+    if(key<root->data)
+     search(root->left,key);
+    else
+     search(root->right,key);
+}
+
+// delete Node from BST
+
+Node* deleteFromBST(Node* root, int key){
+    
+    if(root==NULL)
+      return NULL;
+    
+    if(key<root->data){
+        root->left=deleteFromBST(root->left,key);
+        return root;
+    } 
+    if(key>root->data){
+        root->right= deleteFromBST(root->right,key);
+        return root;
+    } 
+    if(root->data==key){
+        
+        if(root->left ==NULL && root->right ==NULL)
+         { 
+             delete root;
+             return NULL;
+             
+         }  
+        
+        if(root->left !=NULL && root->right ==NULL)
+          {
+              Node* temp=root->left;
+              delete root;
+              return temp;
+          }
+          
+        if(root->left ==NULL && root->right !=NULL)
+           {
+              Node* temp=root->right;
+              delete root;
+              return temp;
+          }
+          
+        Node*inOPrec=root->right;  
+        while(inOPrec->left!=NULL)
+          inOPrec=inOPrec->left;
+
+        int temp=root->data;
+        root->data=inOPrec->data;
+        int data=inOPrec->data;
+        root->right =deleteFromBST(root->right,data);
+        return root;
+    } 
+
+}
 
 // inorder print of BST (result in sorted data)
 
