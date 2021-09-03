@@ -49,6 +49,8 @@ void inOrder(Node* root){
     inOrder(root->right);
 }
 
+// Take input and insert in BST
+
 Node* bulidBST(){
     int x;
     cin>>x;
